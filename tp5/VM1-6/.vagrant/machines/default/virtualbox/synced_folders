@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"owner":"m1reseaux","guestpath":"/vagrant","hostpath":"/amuhome/b13011272/Documents/Reseau/tp5/VM1-6","disabled":false,"__vagrantfile":true},"/mnt/partage":{"create":true,"owner":"m1reseaux","guestpath":"/mnt/partage","hostpath":"/amuhome/b13011272/Documents/Reseau/tp5/partage","disabled":false,"__vagrantfile":true}}}
