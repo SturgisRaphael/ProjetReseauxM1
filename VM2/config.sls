@@ -12,35 +12,38 @@ ip route del default:
   cmd:
     - run
 
-## Configuration de VM2
+##Configuration de VM2
 eth1:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    - enable_ipv4: false
-    - ipv6proto: static
-    - enable_ipv6: true
-    - ipv6_autoconf: no
-    - ipv6ipaddr: fc00:1234:1::2
-    - ipv6netmask: 64
+    - ipaddr: 172.16.2.132
+    - netmask: 28
 
+## Configuration de la route vers LAN1 via VM1
+routes:
+  network.routes:
+    - name: eth1
+    - routes:
+      - name: LAN1
+        ipaddr: 172.16.2.128/28
+        gateway: 172.16.2.132
+        
+##Configuration de VM2
 eth2:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    - enable_ipv4: false
-    - ipv6proto: static
-    - enable_ipv6: true
-    - ipv6_autoconf: no
-    - ipv6ipaddr: fc00:1234:2::2
-    - ipv6netmask: 64
+    - ipaddr: 172.16.2.162
+    - netmask: 28
 
-## No need to add routes
-
-## But enable ipv6 forwarding
-net.ipv6.conf.all.forwarding:
-  sysctl:
-    - present
-    - value: 1
+## Configuration de la route vers LAN2 via VM3
+routes:
+  network.routes:
+    - name: eth2
+    - routes:
+      - name: LAN1
+        ipaddr: 172.16.2.160/28
+        gateway: 172.16.2.162
