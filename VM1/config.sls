@@ -48,7 +48,7 @@ routes:
   network.routes:
     - name: eth2
     - routes:
-      - name: LAN2
+      - name: LAN3-6
         ipaddr: fc00:1234:3::/64
         gateway: fc00:1234:3::1
 
