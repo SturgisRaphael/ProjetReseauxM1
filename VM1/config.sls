@@ -36,7 +36,7 @@ eth2:
     - enabled: True
     - type: eth
     - proto: none
-    - enable_ipv4: true
+    - enable_ipv4: false
     - ipv6proto: static
     - enable_ipv6: true
     - ipv6_autoconf: no
