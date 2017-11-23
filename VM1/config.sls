@@ -21,16 +21,6 @@ eth1:
     - ipaddr: 172.16.2.131
     - netmask: 28
 
-## Configuration de la route vers LAN1 via VM2
-routes:
-  network.routes:
-    - name: eth1
-    - routes:
-      - name: LAN2
-        ipaddr: 172.16.2.128/28
-        gateway: 172.16.2.131
-
-##Configuration de VM1
 eth2:
   network.managed:
     - enabled: True
@@ -43,14 +33,14 @@ eth2:
     - ipv6ipaddr: fc00:1234:3::1
     - ipv6netmask: 64
 
-## Configuration de la route vers LAN3-6 via VM2
+## Configuration de la route vers LAN2 via VM2
 routes:
   network.routes:
-    - name: eth2
+    - name: eth1
     - routes:
-      - name: LAN3-6
-        ipaddr: fc00:1234:3::/64
-        gateway: fc00:1234:3::1
+      - name: LAN2
+        ipaddr: 172.16.2.160/28
+        gateway: 172.16.2.132
 
 
 
