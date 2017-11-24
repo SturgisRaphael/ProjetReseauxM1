@@ -42,5 +42,8 @@ routes:
         ipaddr: 172.16.2.160/28
         gateway: 172.16.2.132
 
-
-
+    - name: eth2
+    - routes: 
+      - name: LAN1-6
+        ipaddr: fc00:1234:1::/64
+        gateway: fc00:1234:3::16

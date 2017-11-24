@@ -37,7 +37,13 @@ eth2:
     - ipv6ipaddr: fc00:1234:2::26
     - ipv6netmask: 64
 
-## No need to add routes
+routes:
+  network.routes:
+    - name: eth1
+    - routes:
+      - name: LAN3-6
+        ipaddr: fc00:1234:3::/64
+        gateway: fc00:1234:1::16
 
 ## But enable ipv6 forwarding
 net.ipv6.conf.all.forwarding:
