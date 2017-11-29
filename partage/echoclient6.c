@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
   }
 
   /* On extrait l'addresse IP */
-  sprintf(ip,"%s",inet_ntoa(((struct sockaddr_in*)resol->ai_addr)->sin_addr));
+  inet_ntop(AF_INET6, &(((struct sockaddr_in6*)resol->ai_addr)->sin6_addr), ip, INET6_ADDRSTRLEN);
 
   /* CrÃ©ation de la socket, de type TCP / IP */
   /* On ne considÃ¨re que la premiÃ¨re adresse renvoyÃ©e par getaddrinfo */
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   /* Connexion */
   fprintf(stderr,"Essai de connexion Ã  %s (%s) sur le port %s\n\n",
 	  hote,ip,port);
-  if (connect(s,resol->ai_addr,sizeof(struct sockaddr_in))<0) {
+  if (connect(s,resol->ai_addr,sizeof(struct sockaddr_in6))<0) {
     perror("connexion");
     exit(4);
   }

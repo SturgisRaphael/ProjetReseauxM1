@@ -22,9 +22,9 @@ int main(int argc, char *argv[])
   int len,on; /* utilitaires divers */
   struct addrinfo * resol; /* rÃ©solution */
   struct addrinfo indic = {AI_PASSIVE, /* Toute interface */
-                           PF_INET,SOCK_STREAM,0, /* IP mode connectÃ© */
+                           PF_INET6,SOCK_STREAM,0, /* IP mode connectÃ© */
                            0,NULL,NULL,NULL};
-  struct sockaddr_in client; /* adresse de socket du client */
+  struct sockaddr_in6 client; /* adresse de socket du client */
   char * port; /* Port pour le service */
   int err; /* code d'erreur */
   
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
   fprintf(stderr,"Option(s) OK!\n");
 
   /* Association de la socket s Ã  l'adresse obtenue par rÃ©solution */
-  if (bind(s,resol->ai_addr,sizeof(struct sockaddr_in))<0) {
+  if (bind(s,resol->ai_addr,sizeof(struct sockaddr_in6))<0) {
     perror("bind");
     exit(5);
   }
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 
   while(1) {
     /* attendre et gÃ©rer indÃ©finiment les connexions entrantes */
-    len=sizeof(struct sockaddr_in);
+    len=sizeof(struct sockaddr_in6);
     if( (n=accept(s,(struct sockaddr *)&client,(socklen_t*)&len)) < 0 ) {
       perror("accept");
       exit(7);

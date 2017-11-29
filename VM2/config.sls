@@ -37,7 +37,3 @@ net.ipv4.ip_forward:
     - present
     - value: 1
 
-
-
-
-
