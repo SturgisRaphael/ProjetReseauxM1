@@ -10,8 +10,10 @@
 #include <linux/if.h>
 #include <linux/if_tun.h>
 
-
-
+int redirection(int src, int dest)
+{
+	return dup2(src, dest);
+}
 
 int tun_alloc(char *dev)
 {
@@ -43,10 +45,13 @@ int tun_alloc(char *dev)
 }      
 
 int main (int argc, char** argv){
-	if(argc != 2)
+	if(argc != 3)
 		perror("Erreur d'argument'");
 	int fd = tun_alloc(argv[1]);
 	fprintf(stderr,"%d\n",fd);
+	
+	redirection(fd, atoi(argv[2]));
+		
 	while(1);
 	return 0;
 }
