@@ -1,0 +1,4 @@
+iftun.o: iftun.c iftun.h
+main.o: main.c extremite.h iftun.h tun_alloc.h
+tun_alloc.o: tun_alloc.c tun_alloc.h
+extremite.o: extremite.c extremite.h iftun.h
