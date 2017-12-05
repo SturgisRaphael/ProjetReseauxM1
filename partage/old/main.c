@@ -11,7 +11,7 @@ int main (int argc, char** argv){
 	fprintf(stderr,"%d\n",fd);
 	
 	if(!strcmp(argv[2], "ext-out"))
-		ext_out("123");
+		ext_out("123", fd);
 	else if(!strcmp(argv[2], "ext-in"))
 		ext_in("123", argv[3], fd);
 	else{

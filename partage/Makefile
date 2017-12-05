@@ -7,7 +7,7 @@ SOURCES=$(wildcard *.c)
 HEADERS=$(wildcard *.h)
 BASENAMES=$(basename $(SOURCES)) 
 OBJECTS=$(addsuffix .o , $(BASENAMES))
-EXEC=main
+EXEC=tunnel64d
 
 all: $(EXEC)
 

@@ -63,7 +63,7 @@ int ext_in(char * port, char * hote, int fd)
   return EXIT_SUCCESS;
 }
 
-int ext_out(char * port)
+int ext_out(char * port, int fd)
 {
 	int s,n; /* descripteurs de socket */
   int len,on; /* utilitaires divers */
@@ -126,11 +126,11 @@ int ext_out(char * port)
     }
     /* traitement */
     //echo(n,hotec,portc);
-    traitement(n,hotec,portc);
+    traitement(n,hotec,portc, fd);
   }
 }
 
-void traitement(int f, char* hote, char* port)
+void traitement(int f, char* hote, char* port, int fd)
 {
   ssize_t lu; /* nb d'octets reÃ§us */
   char msg[MAXLIGNE+1]; /* tampons pour les communications */ 
@@ -147,7 +147,7 @@ void traitement(int f, char* hote, char* port)
         /* log */
         //fprintf(1,"[%s:%s](%i): %3i :%s",hote,port,pid,compteur,tampon);
         
-	    write(1, tampon, lu);
+	    write(fd, tampon, lu);
         //snprintf(msg,MAXLIGNE,"> %s",tampon);
         /* echo vers le client */
         //send(f, msg, strlen(msg),0);

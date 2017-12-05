@@ -25,7 +25,7 @@ eth1:
     - ipv6ipaddr: fc00:1234:2::36
     - ipv6netmask: 64
     
-##Configuration de VM3-6
+##Configuration de VM3
 eth2:
   network.managed:
     - enabled: True
@@ -38,17 +38,17 @@ eth2:
     - ipv6ipaddr: fc00:1234:4::36
     - ipv6netmask: 64
 
-## Configuration de la route vers tunnel64d via VM3
-routes_eth2:
+## Configuration de la route vers LAN1-6 via VM2-6
+routes_eth1:
   network.routes:
-    - name: eth2
+    - name: eth1
     - routes:
-      - name: tunnel64d
-        ipaddr: fc00:1234:ffff::/64
-        gateway: fc00:1234:4::3
+      - name: LAN1-6
+        ipaddr: fc00:1234:1::/64
+        gateway: fc00:1234:2::26
       - name: LAN3-6
         ipaddr: fc00:1234:3::/64
-        gateway: fc00:1234:4::3
+        gateway: fc00:1234:2::26
 
 ## But enable ipv6 forwarding
 net.ipv6.conf.all.forwarding:

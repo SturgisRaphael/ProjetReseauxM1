@@ -14,5 +14,5 @@
 #define MAXLIGNE 80
 #define CIAO "Au revoir ...\n"
 
-int ext_out(char* port);
+int ext_out(char* port, int fd);
 int ext_in(char * port, char * hote, int fd);

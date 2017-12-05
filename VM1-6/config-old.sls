@@ -12,7 +12,6 @@ ip route del default:
   cmd:
     - run
 
-##Configuration de VM3-6
 eth1:
   network.managed:
     - enabled: True
@@ -22,10 +21,10 @@ eth1:
     - ipv6proto: static
     - enable_ipv6: true
     - ipv6_autoconf: no
-    - ipv6ipaddr: fc00:1234:2::36
+    - ipv6ipaddr: fc00:1234:3::16
     - ipv6netmask: 64
-    
-##Configuration de VM3-6
+
+##Configuration de VM1-6
 eth2:
   network.managed:
     - enabled: True
@@ -35,20 +34,20 @@ eth2:
     - ipv6proto: static
     - enable_ipv6: true
     - ipv6_autoconf: no
-    - ipv6ipaddr: fc00:1234:4::36
+    - ipv6ipaddr: fc00:1234:1::16
     - ipv6netmask: 64
 
-## Configuration de la route vers tunnel64d via VM3
-routes_eth2:
+## Configuration de la route vers LAN2-6 via VM2-6
+routes-eth2:
   network.routes:
     - name: eth2
     - routes:
-      - name: tunnel64d
-        ipaddr: fc00:1234:ffff::/64
-        gateway: fc00:1234:4::3
-      - name: LAN3-6
-        ipaddr: fc00:1234:3::/64
-        gateway: fc00:1234:4::3
+      - name: LAN2-6
+        ipaddr: fc00:1234:2::/64
+        gateway: fc00:1234:1::26
+      - name: LAN4-6
+        ipaddr: fc00:1234:4::/64
+        gateway: fc00:1234:1::26
 
 ## But enable ipv6 forwarding
 net.ipv6.conf.all.forwarding:
